@@ -51,8 +51,7 @@ def pizza_detail(request, name, format=None):
 
     elif request.method == "DELETE":
         pizza.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-    
+        return Response("Pizza Deleted",status=status.HTTP_204_NO_CONTENT)
     else:
         return Response("Invalid Request", status=status.HTTP_400_BAD_REQUEST)
 
@@ -88,7 +87,7 @@ def shape_detail(request, name, format=None):
 
     elif request.method == "DELETE":
         shape.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response("Shape Deleted",status=status.HTTP_204_NO_CONTENT)
     
     else:
         return Response("Invalid Request", status=status.HTTP_400_BAD_REQUEST)
@@ -132,7 +131,7 @@ def size_detail(request, name, format=None):
 
     elif request.method == "DELETE":
         size.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response("Size Deleted", status=status.HTTP_204_NO_CONTENT)
     
     else:
         return Response("Invalid Request", status=status.HTTP_400_BAD_REQUEST)
@@ -177,7 +176,7 @@ def topping_detail(request, name, format=None):
 
     elif request.method == "DELETE":
         topping.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response("Topping Deleted", status=status.HTTP_204_NO_CONTENT)
     
     else:
         return Response("Invalid Request", status=status.HTTP_400_BAD_REQUEST)
@@ -254,7 +253,7 @@ def order_detail(request, pk, format=None):
 
     elif request.method == "DELETE":
         order.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response("Order Deleted", status=status.HTTP_204_NO_CONTENT)
     
     else:
         return Response("Invalid Request", status=status.HTTP_400_BAD_REQUEST)
