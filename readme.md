@@ -5,11 +5,11 @@ This is django rest framework based api which is used to store information about
 # Steps to run the project
 1. Clone this repository into a folder on your computer
 2. Download Python
-3. Open terminal inside the folder with code.
-4. Type `pip install -r requirements.txt` in the terminal window to install all the requirements to run the app.
-5. Install MongoDB in your system. Connect it to the local database. Create a new database named `test`.
-5. Type `py manage.py runserver` to start a localhost server for the app.
-6. Open any web browser and go to this address - `http://127.0.0.1:8000/`. This will start the webapp.
+3. Install MongoDB in your system. Connect it to the local database. Create a new database named `test`.
+4. Open terminal inside the folder with code.
+5. Type `pip install -r requirements.txt` in the terminal window to install all the requirements to run the app.
+6. Type `py manage.py runserver` to start a localhost server for the app.
+7. The API is started and now you can use the API routes to give requests.
 
 # API Documentation
 
@@ -475,13 +475,10 @@ Create a new order and returns the created order details
 **Request Header**: `JSON`
 ```
 {
-    "pizza": 2,
-    "shape": 2,
-    "size": 1,
-    "toppings": [
-        2,
-        5
-    ]
+    "pizza": "Pepperoni",
+    "shape": "Regular",
+    "size": "Small",
+    "toppings": "Onion, Tomato"
 }
 ```
 

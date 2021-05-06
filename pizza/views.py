@@ -190,24 +190,24 @@ def order_list(request):
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        print(request.data['pizza'])
+        print(request.data)
         #Get Pizza
         try:
             pizza = Pizza.objects.get(name=request.data['pizza'])
         except:
-            return Response("Invalid Request", status=status.HTTP_400_BAD_REQUEST)    
+            return Response("Invalid Request - No such Pizza", status=status.HTTP_400_BAD_REQUEST)    
 
         #Get Size
         try:
             size = Size.objects.get(name=request.data['size'])
         except:
-            return Response("Invalid Request", status=status.HTTP_400_BAD_REQUEST)    
+            return Response("Invalid Request - No such Size", status=status.HTTP_400_BAD_REQUEST)    
 
         #Get Shape
         try:
             shape = Shape.objects.get(name=request.data['shape'])
         except:
-            return Response("Invalid Request", status=status.HTTP_400_BAD_REQUEST)    
+            return Response("Invalid Request - No such Shape", status=status.HTTP_400_BAD_REQUEST)    
 
         #Get Toppings
         toppings_name = request.data['topping'].split(',')
@@ -217,7 +217,7 @@ def order_list(request):
                 topping = Topping.objects.get(name=t.strip())
                 toppings.append(topping.id)
             except:
-                return Response("Invalid Request", status=status.HTTP_400_BAD_REQUEST)    
+                return Response("Invalid Request - No such Topping", status=status.HTTP_400_BAD_REQUEST)    
 
         try:
             order = Order(user_id=None, pizza=pizza, shape= shape, size= size)
@@ -242,13 +242,13 @@ def order_detail(request, pk, format=None):
     
     if request.method == 'GET':
         serializer = OrderSerializer(order)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == "PUT":
         serializer = OrderSerializer(order, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == "DELETE":
